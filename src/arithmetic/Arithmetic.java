@@ -7,7 +7,6 @@ package arithmetic;
 
 
 import java.util.Scanner;
-import static java.time.Clock.system;
 
 /** This class calls the method to perform 
  * arithmetic operations based on user input
@@ -21,16 +20,28 @@ public class Arithmetic
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) 
-    {
-       
-        ArithmeticBase r= new ArithmeticBase();
-        Scanner in= new Scanner(System.in);
-        int n= in.nextInt();
-        int m= in.nextInt();
-        double result = r.calculate(m,n);
-        System.out.println("result :" +result); 
     
+
+
+    public static void main(String[] args) {
+        ArithmeticBase r = new ArithmeticBase();
+        Scanner in = new Scanner(System.in);
+        
+        System.out.println("Enter first number:");
+        double n = in.nextDouble();
+        
+        System.out.println("Enter second number:");
+        double m = in.nextDouble();
+        
+        System.out.println("Enter arithmetic operation (PLUS, MINUS, TIMES, DIVIDE):");
+        String operationString = in.next().toUpperCase(); // Read input as string
+        
+        Operation operation = Operation.valueOf(operationString); // Convert string to enum
+        
+        double result = r.calculate(n, m, operation);
+        System.out.println("Result: " + result);
     }
 }
+
+
 
